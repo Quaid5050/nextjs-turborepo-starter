@@ -27,4 +27,3 @@ export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
     </QueryClientProvider>
   );
 };
-

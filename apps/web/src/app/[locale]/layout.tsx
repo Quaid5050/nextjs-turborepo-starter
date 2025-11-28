@@ -52,7 +52,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
-      <body>
+      <body suppressHydrationWarning>
         <QueryProvider>
           <NuqsProvider>
             <NextIntlClientProvider>
