@@ -115,7 +115,12 @@ turbo-repo-boilerplate/
 git clone <your-repo-url> my-project-name
 cd my-project-name
 pnpm install
+
+# Install Playwright browsers (required for testing)
+pnpm exec playwright install
 ```
+
+**Note:** After installing dependencies, you need to install Playwright browsers separately. This is required for running tests that use Vitest browser mode or E2E tests.
 
 ### Development
 
@@ -152,6 +157,12 @@ pnpm build-stats
 ```
 
 ### Testing
+
+**Important:** Before running tests, make sure Playwright browsers are installed:
+
+```bash
+pnpm exec playwright install
+```
 
 Run unit tests:
 
@@ -292,6 +303,7 @@ Comprehensive documentation is available in the `docs/` folder:
 
 - **[Project Structure and Best Practices](./docs/project-structure-and-best-practices.md)** - Complete guide on project structure, conventions, and best practices
 - **[Development Workflow](./docs/development-workflow.md)** - Git workflow, commit guidelines, and development process
+- **[Troubleshooting Guide](./docs/troubleshooting.md)** - Common issues and solutions
 
 ## 🔧 Configuration Files
 
@@ -354,6 +366,44 @@ Each app (`admin` and `web`) has the same scripts:
 - `storybook` - Start Storybook
 - `lint` - Lint code
 - `type-check` - Type check
+
+## 🐛 Troubleshooting
+
+### Playwright Browser Installation Error
+
+If you encounter an error like:
+```
+Executable doesn't exist at .../chrome-headless-shell
+```
+
+**Solution:**
+```bash
+pnpm exec playwright install
+```
+
+This installs the required browsers (Chromium, Firefox, WebKit) for testing.
+
+### Tests Failing with Browser Errors
+
+If tests fail with browser-related errors, ensure Playwright browsers are installed:
+```bash
+pnpm exec playwright install
+```
+
+### TypeScript Errors in Shared Packages
+
+If you see TypeScript errors in shared packages (`@repo/*`), try:
+```bash
+pnpm install
+pnpm --filter "@repo/*" type-check
+```
+
+### Build Errors
+
+If you encounter build errors:
+1. Clear the build cache: `pnpm clean`
+2. Reinstall dependencies: `rm -rf node_modules && pnpm install`
+3. Clear Turbo cache: `pnpm turbo clean`
 
 ## 🤝 Contributing
 
