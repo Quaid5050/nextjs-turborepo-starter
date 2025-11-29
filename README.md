@@ -250,6 +250,16 @@ Shared utility functions.
 import { getBaseUrl, formatDate } from '@repo/utils';
 ```
 
+### `@repo/hooks`
+
+Shared React hooks for common functionality.
+
+**Usage:**
+
+```typescript
+import { useDebouncedValue, useLocalStorage, useMediaQuery } from '@repo/hooks';
+```
+
 ### `@repo/eslint-config`
 
 Shared ESLint configuration for the monorepo.
