@@ -18,7 +18,7 @@ const aj = arcjet.withRule(
       'CATEGORY:PREVIEW', // Allow preview links to show OG images
       'CATEGORY:MONITOR', // Allow uptime monitoring services
     ],
-  }),
+  })
 );
 
 export default async function proxy(request: NextRequest, _event: NextFetchEvent) {

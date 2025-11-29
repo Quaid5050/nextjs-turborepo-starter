@@ -28,13 +28,13 @@ const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  },
+  }
 );
 
 export type ButtonProps = {
   asChild?: boolean;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
-& VariantProps<typeof buttonVariants>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants>;
 
 const Button = ({
   ref,

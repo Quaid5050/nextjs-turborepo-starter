@@ -16,10 +16,8 @@ export default antfu(
     lessOpinionated: true,
     isInEditor: false,
 
-    // Code style
-    stylistic: {
-      semi: true,
-    },
+    // Code style - Disabled to let Prettier handle formatting
+    stylistic: false,
 
     // Format settings
     formatters: {
@@ -56,7 +54,6 @@ export default antfu(
   {
     rules: {
       'antfu/no-top-level-await': 'off', // Allow top-level await
-      'style/brace-style': ['error', '1tbs'], // Use the default brace style
       'ts/consistent-type-definitions': ['error', 'type'], // Use `type` instead of `interface`
       'react/prefer-destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
       'node/prefer-global/process': 'off', // Allow using `process.env`

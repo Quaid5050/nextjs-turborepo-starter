@@ -28,7 +28,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 /**
@@ -48,7 +48,7 @@ apiClient.interceptors.response.use(
     //   // Handle server errors
     // }
     return Promise.reject(error);
-  },
+  }
 );
 
 /**
@@ -56,17 +56,17 @@ apiClient.interceptors.response.use(
  */
 export const api = {
   get: <T = unknown>(url: string, config?: AxiosRequestConfig) =>
-    apiClient.get<T>(url, config).then(response => response.data),
+    apiClient.get<T>(url, config).then((response) => response.data),
 
   post: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
-    apiClient.post<T>(url, data, config).then(response => response.data),
+    apiClient.post<T>(url, data, config).then((response) => response.data),
 
   put: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
-    apiClient.put<T>(url, data, config).then(response => response.data),
+    apiClient.put<T>(url, data, config).then((response) => response.data),
 
   patch: <T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig) =>
-    apiClient.patch<T>(url, data, config).then(response => response.data),
+    apiClient.patch<T>(url, data, config).then((response) => response.data),
 
   delete: <T = unknown>(url: string, config?: AxiosRequestConfig) =>
-    apiClient.delete<T>(url, config).then(response => response.data),
+    apiClient.delete<T>(url, config).then((response) => response.data),
 };
