@@ -108,18 +108,49 @@ turbo-repo-boilerplate/
 
 - **Node.js** >= 20
 - **pnpm** >= 9.0.0
+- **make** (optional, for using Makefile commands)
+
+**Note:** On Windows, you can use [Git Bash](https://git-scm.com/downloads) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/) to run Makefile commands. Alternatively, you can use the pnpm commands directly.
 
 ### Installation
+
+**Option 1: Using Makefile (Recommended)**
+
+```bash
+git clone <your-repo-url> my-project-name
+cd my-project-name
+make setup
+```
+
+This will automatically:
+
+- Install all dependencies
+- Install Playwright browsers (required for testing)
+
+**Option 2: Manual Installation**
 
 ```bash
 git clone <your-repo-url> my-project-name
 cd my-project-name
 pnpm install
+
+# Install Playwright browsers (required for testing)
+pnpm exec playwright install
 ```
+
+**Note:** After installing dependencies, you need to install Playwright browsers separately. This is required for running tests that use Vitest browser mode or E2E tests.
 
 ### Development
 
 Run all apps in development mode:
+
+**Using Makefile:**
+
+```bash
+make dev
+```
+
+**Or using pnpm directly:**
 
 ```bash
 pnpm dev
@@ -153,6 +184,12 @@ pnpm build-stats
 
 ### Testing
 
+**Important:** Before running tests, make sure Playwright browsers are installed:
+
+```bash
+pnpm exec playwright install
+```
+
 Run unit tests:
 
 ```bash
@@ -162,7 +199,13 @@ pnpm test
 Run E2E tests:
 
 ```bash
+# Run tests (headless)
 pnpm test:e2e
+
+# Run tests with UI mode (see browser running!)
+make test-e2e-ui
+# or
+pnpm exec playwright test --ui
 ```
 
 Run Storybook:
@@ -170,6 +213,22 @@ Run Storybook:
 ```bash
 pnpm storybook
 ```
+
+### Testing Sentry Error Monitoring
+
+Test Sentry error monitoring using the dedicated test page:
+
+1. **Navigate to the test page**:
+
+   ```
+   http://localhost:3000/en/debug/sentry
+   ```
+
+2. **Click error buttons** to trigger different types of errors (client-side, server-side, custom messages, etc.)
+
+3. **Check your Sentry dashboard** - errors should appear within a few seconds
+
+For detailed instructions, see the [Sentry Testing Guide](./docs/sentry-testing.md).
 
 ### Code Quality
 
@@ -292,6 +351,13 @@ Comprehensive documentation is available in the `docs/` folder:
 
 - **[Project Structure and Best Practices](./docs/project-structure-and-best-practices.md)** - Complete guide on project structure, conventions, and best practices
 - **[Development Workflow](./docs/development-workflow.md)** - Git workflow, commit guidelines, and development process
+- **[Troubleshooting Guide](./docs/troubleshooting.md)** - Common issues and solutions
+- **[Playwright Testing Guide](./docs/playwright-guide.md)** - Complete guide to E2E testing with Playwright
+- **[Viewing Playwright Results](./docs/playwright-viewing-results.md)** - How to view screenshots, videos, and browser during tests
+- **[Sentry Testing Guide](./docs/sentry-testing.md)** - How to test and verify Sentry error monitoring
+- **[Sentry Dashboard Access](./docs/sentry-dashboard-access.md)** - How to access and navigate the Sentry dashboard
+- **[Sentry Spotlight Guide](./docs/sentry-spotlight.md)** - How to use Sentry Spotlight for local development
+- **[Sentry Production Setup](./docs/sentry-production.md)** - Simple guide for production deployment
 
 ## 🔧 Configuration Files
 
@@ -326,7 +392,25 @@ All configuration files from the Next.js boilerplate are included:
 
 ## 📝 Scripts Reference
 
-### Root Scripts
+### Using Makefile (Recommended)
+
+The project includes a `Makefile` with convenient commands:
+
+```bash
+make setup          # Complete project setup (install + browsers)
+make dev            # Start all apps in development
+make build          # Build all apps
+make test           # Run all unit tests
+make test-e2e       # Run E2E tests
+make lint           # Lint all packages
+make lint-fix       # Fix linting issues
+make type-check     # Type check all packages
+make verify         # Run all checks (lint + type-check + test)
+make clean          # Clean all build artifacts
+make help           # Show all available commands
+```
+
+### Root Scripts (pnpm)
 
 - `pnpm dev` - Start all apps in development
 - `pnpm build` - Build all apps
@@ -354,6 +438,49 @@ Each app (`admin` and `web`) has the same scripts:
 - `storybook` - Start Storybook
 - `lint` - Lint code
 - `type-check` - Type check
+
+## 🐛 Troubleshooting
+
+### Playwright Browser Installation Error
+
+If you encounter an error like:
+
+```
+Executable doesn't exist at .../chrome-headless-shell
+```
+
+**Solution:**
+
+```bash
+pnpm exec playwright install
+```
+
+This installs the required browsers (Chromium, Firefox, WebKit) for testing.
+
+### Tests Failing with Browser Errors
+
+If tests fail with browser-related errors, ensure Playwright browsers are installed:
+
+```bash
+pnpm exec playwright install
+```
+
+### TypeScript Errors in Shared Packages
+
+If you see TypeScript errors in shared packages (`@repo/*`), try:
+
+```bash
+pnpm install
+pnpm --filter "@repo/*" type-check
+```
+
+### Build Errors
+
+If you encounter build errors:
+
+1. Clear the build cache: `pnpm clean`
+2. Reinstall dependencies: `rm -rf node_modules && pnpm install`
+3. Clear Turbo cache: `pnpm turbo clean`
 
 ## 🤝 Contributing
 

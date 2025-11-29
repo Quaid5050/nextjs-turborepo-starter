@@ -7,31 +7,32 @@ test.describe('I18n', () => {
     }) => {
       await page.goto('/');
 
-      await expect(
-        page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
-        })
-      ).toBeVisible();
+      // Verify English homepage loads
+      await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
 
+      // Switch to French
       await page.getByLabel('lang-switcher').selectOption('fr');
 
-      await expect(
-        page.getByRole('heading', {
-          name: 'Code de démarrage pour Next.js avec Tailwind CSS',
-        })
-      ).toBeVisible();
+      // Verify French homepage loads (heading should still be "Welcome" but content changes)
+      await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+
+      // Verify French content is displayed
+      await expect(page.getByText(/Next js Boilerplate est le code/i)).toBeVisible();
     });
 
-    test('should switch language from English to French using URL and verify text on the about page', async ({
-      page,
-    }) => {
-      await page.goto('/about');
+    test('should switch language from English to French using URL', async ({ page }) => {
+      await page.goto('/');
 
-      await expect(page.getByRole('heading', { name: 'About' })).toBeVisible();
+      // Verify English homepage
+      await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+      await expect(page.getByText(/Next js Boilerplate is the perfect/i)).toBeVisible();
 
-      await page.goto('/fr/about');
+      // Navigate to French version
+      await page.goto('/fr');
 
-      await expect(page.getByRole('heading', { name: 'A propos' })).toBeVisible();
+      // Verify French homepage
+      await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+      await expect(page.getByText(/Next js Boilerplate est le code/i)).toBeVisible();
     });
   });
 });

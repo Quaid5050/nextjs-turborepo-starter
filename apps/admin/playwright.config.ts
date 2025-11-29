@@ -1,4 +1,5 @@
 import type { ChromaticConfig } from '@chromatic-com/playwright';
+import path from 'node:path';
 import { defineConfig, devices } from '@playwright/test';
 
 // Use process.env.PORT by default and fallback to port 3001 for admin
@@ -6,6 +7,9 @@ const PORT = process.env.PORT || 3001;
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`;
+
+// Get the monorepo root directory (two levels up from this config file)
+const rootDir = path.resolve(__dirname, '../..');
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -29,10 +33,11 @@ export default defineConfig<ChromaticConfig>({
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
   webServer: {
-    command: process.env.CI ? 'pnpm run start' : 'pnpm run dev',
+    command: process.env.CI ? 'pnpm --filter admin start' : 'pnpm --filter admin dev',
     url: baseURL,
     timeout: 2 * 60 * 1000,
     reuseExistingServer: !process.env.CI,
+    cwd: rootDir,
     env: {
       NEXT_PUBLIC_SENTRY_DISABLED: 'true',
     },
