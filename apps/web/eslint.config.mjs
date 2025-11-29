@@ -25,9 +25,7 @@ export default antfu(
     },
 
     // Ignored paths
-    ignores: [
-      'migrations/**/*',
-    ],
+    ignores: ['migrations/**/*'],
   },
   // --- Accessibility Rules ---
   jsxA11y.flatConfigs.recommended,
@@ -42,10 +40,7 @@ export default antfu(
   },
   // --- E2E Testing Rules ---
   {
-    files: [
-      '**/*.spec.ts',
-      '**/*.e2e.ts',
-    ],
+    files: ['**/*.spec.ts', '**/*.e2e.ts'],
     ...playwright.configs['flat/recommended'],
   },
   // --- Storybook Rules ---
@@ -62,5 +57,5 @@ export default antfu(
       'tailwindcss/no-custom-classname': 'off', // Disable for shadcn/ui CSS variable classes
       'react-refresh/only-export-components': 'off', // Allow exporting constants with components (shadcn/ui pattern)
     },
-  },
+  }
 );
