@@ -4,7 +4,12 @@ import { cn } from '@/lib/utils';
 
 export type InputProps = {} & React.InputHTMLAttributes<HTMLInputElement>;
 
-const Input = ({ ref, className, type, ...props }: InputProps & { ref?: React.RefObject<HTMLInputElement | null> }) => {
+const Input = ({
+  ref,
+  className,
+  type,
+  ...props
+}: InputProps & { ref?: React.RefObject<HTMLInputElement | null> }) => {
   return (
     <input
       type={type}

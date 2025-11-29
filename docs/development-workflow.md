@@ -24,6 +24,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format:
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -33,6 +34,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format:
 - `chore`: Maintenance tasks
 
 **Examples:**
+
 ```
 feat(product): add product search functionality
 fix(cart): resolve cart item duplication issue
@@ -116,4 +118,3 @@ Before submitting a PR, ensure:
 5. Push and create a Pull Request
 6. Address review feedback
 7. Merge after approval
-

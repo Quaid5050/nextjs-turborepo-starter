@@ -7,12 +7,14 @@ Built with best practices and prioritizing developer experience: Next.js 16+, Ty
 ## ✨ Features
 
 ### Monorepo Structure
+
 - 🏗️ **Turborepo** for fast, cached builds
 - 📦 **Shared packages** with `@repo` prefix
 - 🔄 **Workspace dependencies** managed with pnpm
 - ⚡ **Parallel execution** and intelligent caching
 
 ### Next.js Apps
+
 - ⚡ **Next.js 16+** with App Router
 - 🔥 **TypeScript** with strict mode
 - 💎 **Tailwind CSS 4**
@@ -24,6 +26,7 @@ Built with best practices and prioritizing developer experience: Next.js 16+, Ty
 - ⌨️ **React Hook Form** with Zod validation
 
 ### Developer Experience
+
 - 📏 **ESLint** with Antfu config
 - 💖 **Prettier** for code formatting
 - 🦊 **Lefthook** for Git hooks
@@ -34,6 +37,7 @@ Built with best practices and prioritizing developer experience: Next.js 16+, Ty
 - 🗂️ **VSCode** configuration (Debug, Settings, Tasks, Extensions)
 
 ### Testing & Quality
+
 - 🦺 **Vitest** for unit testing (with browser mode)
 - 🧪 **Playwright** for E2E testing
 - 🎉 **Storybook** for UI development
@@ -41,6 +45,7 @@ Built with best practices and prioritizing developer experience: Next.js 16+, Ty
 - 👷 **GitHub Actions** for CI/CD
 
 ### Monitoring & Security
+
 - 🚨 **Sentry** for error monitoring
 - 🔍 **Sentry Spotlight** for local development
 - 📝 **LogTape** with Better Stack for logging
@@ -49,6 +54,7 @@ Built with best practices and prioritizing developer experience: Next.js 16+, Ty
 - 📊 **PostHog** for analytics
 
 ### Additional Features
+
 - 🎁 **Semantic Release** for automatic changelog
 - 🔍 **Visual regression testing** with Chromatic
 - ⚙️ **Bundle Analyzer** for optimization
@@ -120,6 +126,7 @@ pnpm dev
 ```
 
 This will start:
+
 - **Admin app** on http://localhost:3001
 - **Web app** on http://localhost:3000
 
@@ -194,6 +201,7 @@ pnpm check:i18n
 ### Git Hooks
 
 The project uses **Lefthook** for Git hooks. It will automatically:
+
 - Run linters on staged files
 - Validate commit messages
 - Run tests before push
@@ -211,13 +219,15 @@ pnpm commit
 ### `@repo/ui`
 
 Shared UI components built with shadcn/ui.
+
 - Button component
 - Input component
 - More components can be added
 
 **Usage:**
+
 ```typescript
-import { Button } from '@repo/ui';
+import { Button } from "@repo/ui";
 ```
 
 ### `@repo/types`
@@ -225,8 +235,9 @@ import { Button } from '@repo/ui';
 Shared TypeScript type definitions.
 
 **Usage:**
+
 ```typescript
-import type { BaseEntity, ApiResponse } from '@repo/types';
+import type { BaseEntity, ApiResponse } from "@repo/types";
 ```
 
 ### `@repo/utils`
@@ -234,8 +245,9 @@ import type { BaseEntity, ApiResponse } from '@repo/types';
 Shared utility functions.
 
 **Usage:**
+
 ```typescript
-import { getBaseUrl, formatDate } from '@repo/utils';
+import { getBaseUrl, formatDate } from "@repo/utils";
 ```
 
 ### `@repo/eslint-config`
@@ -323,6 +335,7 @@ All configuration files from the Next.js boilerplate are included:
 ### App-Specific Scripts
 
 Each app (`admin` and `web`) has the same scripts:
+
 - `dev` - Start development server
 - `build` - Build for production
 - `start` - Start production server
@@ -335,6 +348,7 @@ Each app (`admin` and `web`) has the same scripts:
 ## 🤝 Contributing
 
 This is a boilerplate template. Feel free to:
+
 - Fork and customize for your needs
 - Submit issues for improvements
 - Contribute enhancements
@@ -346,6 +360,7 @@ MIT
 ## 🙏 Credits
 
 This boilerplate combines:
+
 - [Turborepo](https://turbo.build/) - Monorepo build system
 - [Next.js Boilerplate with Best Practices](https://github.com/Quaid5050/nextjs-boilerplate-with-best-practices) - Next.js best practices
 - Enhanced and maintained by Quaid Ahmed

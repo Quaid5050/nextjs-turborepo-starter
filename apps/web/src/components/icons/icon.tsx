@@ -19,7 +19,6 @@ import {
   Home,
   Info,
   Loader2,
-
   Mail,
   MapPin,
   Menu,

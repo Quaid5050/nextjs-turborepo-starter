@@ -4,8 +4,8 @@ export const getBaseUrl = () => {
   }
 
   if (
-    process.env.VERCEL_ENV === 'production'
-    && process.env.VERCEL_PROJECT_PRODUCTION_URL
+    process.env.VERCEL_ENV === "production" &&
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
   ) {
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   }
@@ -14,10 +14,14 @@ export const getBaseUrl = () => {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return 'http://localhost:3000';
+  return "http://localhost:3000";
 };
 
-export const getI18nPath = (url: string, locale: string, defaultLocale: string = 'en') => {
+export const getI18nPath = (
+  url: string,
+  locale: string,
+  defaultLocale: string = "en",
+) => {
   if (locale === defaultLocale) {
     return url;
   }
@@ -26,5 +30,5 @@ export const getI18nPath = (url: string, locale: string, defaultLocale: string =
 };
 
 export const isServer = () => {
-  return typeof window === 'undefined';
+  return typeof window === "undefined";
 };

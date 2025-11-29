@@ -15,15 +15,8 @@ const baseConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
-  transpilePackages: [
-    '@repo/ui',
-    '@repo/utils',
-    '@repo/types',
-  ],
-  serverExternalPackages: [
-    'import-in-the-middle',
-    'require-in-the-middle',
-  ],
+  transpilePackages: ['@repo/ui', '@repo/utils', '@repo/types'],
+  serverExternalPackages: ['import-in-the-middle', 'require-in-the-middle'],
 };
 
 // Initialize the Next-Intl plugin

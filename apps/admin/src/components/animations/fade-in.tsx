@@ -15,7 +15,12 @@ const fadeInVariants: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const FadeIn = ({ children, delay = 0, duration = 0.5, className }: FadeInProps) => {
+export const FadeIn = ({
+  children,
+  delay = 0,
+  duration = 0.5,
+  className,
+}: FadeInProps) => {
   return (
     <motion.div
       initial="hidden"
