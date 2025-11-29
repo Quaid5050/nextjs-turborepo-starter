@@ -23,6 +23,7 @@ make setup
 ```
 
 This single command will:
+
 - Install all dependencies
 - Install Playwright browsers
 - Set up everything needed to start development

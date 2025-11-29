@@ -123,6 +123,7 @@ make setup
 ```
 
 This will automatically:
+
 - Install all dependencies
 - Install Playwright browsers (required for testing)
 
@@ -144,11 +145,13 @@ pnpm exec playwright install
 Run all apps in development mode:
 
 **Using Makefile:**
+
 ```bash
 make dev
 ```
 
 **Or using pnpm directly:**
+
 ```bash
 pnpm dev
 ```
@@ -210,6 +213,22 @@ Run Storybook:
 ```bash
 pnpm storybook
 ```
+
+### Testing Sentry Error Monitoring
+
+Test Sentry error monitoring using the dedicated test page:
+
+1. **Navigate to the test page**:
+
+   ```
+   http://localhost:3000/en/debug/sentry
+   ```
+
+2. **Click error buttons** to trigger different types of errors (client-side, server-side, custom messages, etc.)
+
+3. **Check your Sentry dashboard** - errors should appear within a few seconds
+
+For detailed instructions, see the [Sentry Testing Guide](./docs/sentry-testing.md).
 
 ### Code Quality
 
@@ -335,6 +354,10 @@ Comprehensive documentation is available in the `docs/` folder:
 - **[Troubleshooting Guide](./docs/troubleshooting.md)** - Common issues and solutions
 - **[Playwright Testing Guide](./docs/playwright-guide.md)** - Complete guide to E2E testing with Playwright
 - **[Viewing Playwright Results](./docs/playwright-viewing-results.md)** - How to view screenshots, videos, and browser during tests
+- **[Sentry Testing Guide](./docs/sentry-testing.md)** - How to test and verify Sentry error monitoring
+- **[Sentry Dashboard Access](./docs/sentry-dashboard-access.md)** - How to access and navigate the Sentry dashboard
+- **[Sentry Spotlight Guide](./docs/sentry-spotlight.md)** - How to use Sentry Spotlight for local development
+- **[Sentry Production Setup](./docs/sentry-production.md)** - Simple guide for production deployment
 
 ## 🔧 Configuration Files
 

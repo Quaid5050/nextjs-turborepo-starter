@@ -140,6 +140,18 @@ storybook:
 	@echo "$(BLUE)📚 Starting Storybook...$(NC)"
 	@pnpm storybook
 
+## spotlight: Start Sentry Spotlight for local error monitoring
+spotlight:
+	@echo "$(BLUE)🔍 Starting Sentry Spotlight...$(NC)"
+	@echo "$(YELLOW)💡 Spotlight allows you to see errors locally without sending to Sentry$(NC)"
+	@echo "$(YELLOW)💡 Make sure your dev server is running in another terminal$(NC)"
+	@cd apps/web && pnpm dev:spotlight
+
+## spotlight-admin: Start Sentry Spotlight for admin app
+spotlight-admin:
+	@echo "$(BLUE)🔍 Starting Sentry Spotlight for admin app...$(NC)"
+	@cd apps/admin && pnpm dev:spotlight
+
 ## clean: Clean all build artifacts, test results, and node_modules
 clean:
 	@echo "$(BLUE)🧹 Cleaning build artifacts...$(NC)"

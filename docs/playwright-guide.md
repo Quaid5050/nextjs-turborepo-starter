@@ -17,6 +17,7 @@ This guide will help you get started with Playwright E2E testing in this monorep
 ### Prerequisites
 
 1. **Install Playwright browsers** (if not already done):
+
    ```bash
    make setup
    # or
@@ -90,6 +91,7 @@ make test-e2e-ui
 ```
 
 **What you'll see:**
+
 - 🌐 **Live browser** - Watch tests run in real-time
 - 📸 **Screenshots** - See screenshots taken during tests
 - 🎥 **Video recordings** - Watch test execution videos
@@ -128,6 +130,7 @@ pnpm exec playwright test --project=firefox
 ### Test File Location
 
 E2E tests are located in:
+
 - **Shared tests**: `tests/e2e/*.e2e.ts`
 - **App-specific tests**: `apps/*/tests/e2e/*.e2e.ts`
 
@@ -240,6 +243,7 @@ test.describe('Feature Name', () => {
 ### 1. Use Semantic Selectors
 
 **✅ Good:**
+
 ```typescript
 await page.getByRole('button', { name: 'Submit' }).click();
 await page.getByLabel('Email').fill('test@example.com');
@@ -247,6 +251,7 @@ await page.getByPlaceholder('Enter your name').fill('John');
 ```
 
 **❌ Avoid:**
+
 ```typescript
 await page.locator('#submit-button').click();
 await page.locator('.email-input').fill('test@example.com');
@@ -255,12 +260,14 @@ await page.locator('.email-input').fill('test@example.com');
 ### 2. Use Explicit Waits
 
 **✅ Good:**
+
 ```typescript
 await expect(page.getByText('Success')).toBeVisible();
 await page.waitForURL(/\/success$/);
 ```
 
 **❌ Avoid:**
+
 ```typescript
 await page.waitForTimeout(5000); // Fixed timeout
 ```
@@ -301,7 +308,7 @@ const test = base.extend({
     await page.getByLabel('Password').fill('password');
     await page.getByRole('button', { name: 'Login' }).click();
     await page.waitForURL(/\/dashboard$/);
-    
+
     await use(page);
   },
 });
@@ -335,8 +342,8 @@ test('should create and delete item', async ({ page }) => {
 test('should load data from API', async ({ page }) => {
   // Wait for network request to complete
   await page.goto('/');
-  await page.waitForResponse(response => 
-    response.url().includes('/api/data') && response.status() === 200
+  await page.waitForResponse(
+    (response) => response.url().includes('/api/data') && response.status() === 200
   );
 
   // Verify data is displayed
@@ -348,7 +355,7 @@ test('should load data from API', async ({ page }) => {
 
 ```typescript
 test('should handle confirmation dialog', async ({ page }) => {
-  page.on('dialog', async dialog => {
+  page.on('dialog', async (dialog) => {
     expect(dialog.message()).toContain('Are you sure?');
     await dialog.accept();
   });
@@ -363,7 +370,7 @@ test('should handle confirmation dialog', async ({ page }) => {
 test('should capture screenshot', async ({ page }) => {
   await page.goto('/');
   await page.screenshot({ path: 'screenshot.png' });
-  
+
   // Or for full page
   await page.screenshot({ path: 'full-page.png', fullPage: true });
 });
@@ -386,7 +393,7 @@ test('should work on mobile', async ({ page }) => {
 
 ```typescript
 test.describe('Internationalization', () => {
-  ['en', 'fr'].forEach(locale => {
+  ['en', 'fr'].forEach((locale) => {
     test(`should display content in ${locale}`, async ({ page }) => {
       await page.goto(`/${locale}`);
       // Test locale-specific content
@@ -404,6 +411,7 @@ pnpm exec playwright test --debug
 ```
 
 This opens the Playwright Inspector where you can:
+
 - Step through tests
 - See the browser in action
 - Inspect elements
@@ -414,11 +422,11 @@ This opens the Playwright Inspector where you can:
 ```typescript
 test('should debug with logs', async ({ page }) => {
   // Listen to console logs
-  page.on('console', msg => console.log('Browser console:', msg.text()));
+  page.on('console', (msg) => console.log('Browser console:', msg.text()));
 
   // Listen to network requests
-  page.on('request', request => console.log('Request:', request.url()));
-  page.on('response', response => console.log('Response:', response.url(), response.status()));
+  page.on('request', (request) => console.log('Request:', request.url()));
+  page.on('response', (response) => console.log('Response:', response.url(), response.status()));
 
   await page.goto('/');
 });
@@ -466,20 +474,20 @@ test('should run slowly', async ({ page }) => {
 
 ```typescript
 export default defineConfig({
-  testDir: './tests/e2e',        // Test directory
-  timeout: 60 * 1000,            // Test timeout (60s)
+  testDir: './tests/e2e', // Test directory
+  timeout: 60 * 1000, // Test timeout (60s)
   expect: {
-    timeout: 20 * 1000,           // Assertion timeout (20s)
+    timeout: 20 * 1000, // Assertion timeout (20s)
   },
   webServer: {
-    command: 'pnpm dev',          // Command to start dev server
+    command: 'pnpm dev', // Command to start dev server
     url: 'http://localhost:3000', // Server URL
     reuseExistingServer: !process.env.CI, // Reuse if already running
   },
   use: {
     baseURL: 'http://localhost:3000',
-    trace: 'retain-on-failure',   // Save trace on failure
-    video: 'retain-on-failure',   // Save video on failure
+    trace: 'retain-on-failure', // Save trace on failure
+    video: 'retain-on-failure', // Save video on failure
   },
 });
 ```
@@ -487,6 +495,7 @@ export default defineConfig({
 ## CI/CD Integration
 
 Tests run automatically in CI/CD. The configuration:
+
 - Runs on multiple browsers in CI
 - Saves traces and videos on failure
 - Uses GitHub Actions reporter
@@ -523,4 +532,3 @@ pnpm exec playwright show-trace trace.zip
 # Install browsers
 pnpm exec playwright install
 ```
-

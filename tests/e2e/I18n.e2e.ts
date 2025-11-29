@@ -15,14 +15,12 @@ test.describe('I18n', () => {
 
       // Verify French homepage loads (heading should still be "Welcome" but content changes)
       await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
-      
+
       // Verify French content is displayed
       await expect(page.getByText(/Next js Boilerplate est le code/i)).toBeVisible();
     });
 
-    test('should switch language from English to French using URL', async ({
-      page,
-    }) => {
+    test('should switch language from English to French using URL', async ({ page }) => {
       await page.goto('/');
 
       // Verify English homepage

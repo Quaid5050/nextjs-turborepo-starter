@@ -17,6 +17,7 @@ pnpm exec playwright test --ui
 ```
 
 **What you get:**
+
 - 🌐 **Live browser window** - See tests running in real-time
 - 📸 **Screenshots** - View screenshots taken during tests
 - 🎥 **Video recordings** - Watch full test execution
@@ -44,6 +45,7 @@ pnpm exec playwright test --debug
 ```
 
 **What you get:**
+
 - **Playwright Inspector** - Step through tests one action at a time
 - **Browser window** - See the browser with highlighted elements
 - **Console** - View console logs and network requests
@@ -53,6 +55,7 @@ pnpm exec playwright test --debug
 ### Where Screenshots Are Stored
 
 Screenshots are saved in:
+
 ```
 apps/[app-name]/test-results/
 ├── [test-name]-[browser]/
@@ -67,6 +70,7 @@ apps/[app-name]/test-results/
    - Created automatically when tests fail
 
 2. **Manual screenshots** (from test code):
+
    ```typescript
    await page.screenshot({ path: 'screenshot.png' });
    ```
@@ -110,6 +114,7 @@ pnpm exec playwright show-trace apps/web/test-results/*/trace.zip
 ```
 
 **What you'll see:**
+
 - Full test execution timeline
 - Network requests
 - Console logs
@@ -138,6 +143,7 @@ pnpm exec playwright show-report apps/web/playwright-report
 ```
 
 **Report includes:**
+
 - Test results summary
 - Screenshots
 - Videos
@@ -162,6 +168,7 @@ apps/*/test-results/chromatic-archives/archive/
 ### Recommended Workflow:
 
 1. **Start with UI Mode:**
+
    ```bash
    make test-e2e-ui
    ```
@@ -227,4 +234,3 @@ open apps/web/test-results  # macOS
 2. **Traces are most useful** - They contain everything (screenshots, network, console)
 3. **Screenshots are in test-results** - Check there after test failures
 4. **Clean regularly** - Use `make clean-test` to remove old artifacts
-
