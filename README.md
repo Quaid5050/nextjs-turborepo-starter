@@ -372,11 +372,13 @@ Each app (`admin` and `web`) has the same scripts:
 ### Playwright Browser Installation Error
 
 If you encounter an error like:
+
 ```
 Executable doesn't exist at .../chrome-headless-shell
 ```
 
 **Solution:**
+
 ```bash
 pnpm exec playwright install
 ```
@@ -386,6 +388,7 @@ This installs the required browsers (Chromium, Firefox, WebKit) for testing.
 ### Tests Failing with Browser Errors
 
 If tests fail with browser-related errors, ensure Playwright browsers are installed:
+
 ```bash
 pnpm exec playwright install
 ```
@@ -393,6 +396,7 @@ pnpm exec playwright install
 ### TypeScript Errors in Shared Packages
 
 If you see TypeScript errors in shared packages (`@repo/*`), try:
+
 ```bash
 pnpm install
 pnpm --filter "@repo/*" type-check
@@ -401,6 +405,7 @@ pnpm --filter "@repo/*" type-check
 ### Build Errors
 
 If you encounter build errors:
+
 1. Clear the build cache: `pnpm clean`
 2. Reinstall dependencies: `rm -rf node_modules && pnpm install`
 3. Clear Turbo cache: `pnpm turbo clean`

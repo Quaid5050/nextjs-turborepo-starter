@@ -18,7 +18,7 @@ This guide helps you resolve common issues when working with this boilerplate.
 When running tests, you encounter an error like:
 
 ```
-error during close browserType.launch: Executable doesn't exist at 
+error during close browserType.launch: Executable doesn't exist at
 /Users/.../Library/Caches/ms-playwright/chromium_headless_shell-1200/...
 ```
 
@@ -42,6 +42,7 @@ pnpm exec playwright install
 ```
 
 This will download:
+
 - Chromium (with headless shell)
 - Firefox
 - WebKit
@@ -65,10 +66,12 @@ pnpm exec playwright install
 ### Browser Tests Failing
 
 **Symptoms:**
+
 - Tests pass but show browser errors
 - "Executable doesn't exist" errors
 
 **Solution:**
+
 ```bash
 pnpm exec playwright install
 ```
@@ -76,18 +79,21 @@ pnpm exec playwright install
 ### Unit Tests Failing
 
 **Symptoms:**
+
 - TypeScript errors in tests
 - Module resolution errors
 
 **Solutions:**
 
 1. **Clear cache and reinstall:**
+
    ```bash
    pnpm clean
    pnpm install
    ```
 
 2. **Check TypeScript configuration:**
+
    ```bash
    pnpm type-check
    ```
@@ -100,17 +106,20 @@ pnpm exec playwright install
 ### Errors in Shared Packages
 
 **Symptoms:**
+
 - Type errors in `@repo/*` packages
 - "Cannot find module" errors
 
 **Solutions:**
 
 1. **Reinstall dependencies:**
+
    ```bash
    pnpm install
    ```
 
 2. **Type check specific package:**
+
    ```bash
    pnpm --filter "@repo/types" type-check
    ```
@@ -123,6 +132,7 @@ pnpm exec playwright install
 ### Module Resolution Errors
 
 **Symptoms:**
+
 - "Cannot find module '@repo/...'"
 - Import errors
 
@@ -132,6 +142,7 @@ pnpm exec playwright install
    Check `pnpm-workspace.yaml` includes all packages
 
 2. **Clear and reinstall:**
+
    ```bash
    rm -rf node_modules
    pnpm install
@@ -145,6 +156,7 @@ pnpm exec playwright install
 ### Build Fails with Cache Errors
 
 **Solution:**
+
 ```bash
 pnpm clean
 pnpm build
@@ -153,6 +165,7 @@ pnpm build
 ### Turbo Cache Issues
 
 **Solution:**
+
 ```bash
 pnpm turbo clean
 pnpm build
@@ -161,12 +174,14 @@ pnpm build
 ### Next.js Build Errors
 
 **Symptoms:**
+
 - Build fails with module errors
 - Type errors during build
 
 **Solutions:**
 
 1. **Clear Next.js cache:**
+
    ```bash
    rm -rf apps/*/.next
    pnpm build
@@ -183,6 +198,7 @@ pnpm build
 ### Missing Environment Variables
 
 **Symptoms:**
+
 - Runtime errors about missing env vars
 - Build succeeds but app crashes
 
@@ -192,6 +208,7 @@ pnpm build
    See `apps/*/src/libs/Env.ts` for required variables
 
 2. **Create `.env.local` files:**
+
    ```bash
    # apps/admin/.env.local
    NEXT_PUBLIC_APP_URL=http://localhost:3001
@@ -204,6 +221,7 @@ pnpm build
 ### Environment Variable Validation Errors
 
 **Symptoms:**
+
 - Errors from `@t3-oss/env-nextjs`
 - "Invalid environment variable" errors
 
@@ -222,10 +240,12 @@ pnpm build
 ### Unused Dependencies
 
 **Symptoms:**
+
 - Warnings from Knip
 - Large `node_modules`
 
 **Solution:**
+
 ```bash
 pnpm check:deps
 ```
@@ -235,17 +255,20 @@ This will show unused dependencies that can be removed.
 ### Version Conflicts
 
 **Symptoms:**
+
 - Peer dependency warnings
 - Incompatible package versions
 
 **Solution:**
 
 1. **Check for updates:**
+
    ```bash
    pnpm outdated
    ```
 
 2. **Update dependencies:**
+
    ```bash
    pnpm update
    ```
@@ -256,18 +279,21 @@ This will show unused dependencies that can be removed.
 ### Installation Issues
 
 **Symptoms:**
+
 - `pnpm install` fails
 - Lock file conflicts
 
 **Solutions:**
 
 1. **Delete lock file and reinstall:**
+
    ```bash
    rm pnpm-lock.yaml
    pnpm install
    ```
 
 2. **Clear pnpm store:**
+
    ```bash
    pnpm store prune
    pnpm install
@@ -318,4 +344,3 @@ pnpm build
 # Clean everything
 pnpm clean
 ```
-
