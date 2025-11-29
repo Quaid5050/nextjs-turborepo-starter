@@ -29,8 +29,8 @@
   "i18n-ally.keystyle": "nested",
 
   // Disable the default formatter, use ESLint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
 
   // Auto fix with ESLint on save
   "editor.codeActionsOnSave": {
