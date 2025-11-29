@@ -75,16 +75,26 @@ pnpm exec playwright test tests/e2e/Sanity.check.e2e.ts
 pnpm exec playwright test --grep "Sanity"
 ```
 
-### Run Tests in UI Mode (Interactive)
+### Run Tests in UI Mode (Interactive) - **RECOMMENDED FOR VIEWING BROWSER**
 
 ```bash
-# Open Playwright UI for interactive testing
+# Open Playwright UI for interactive testing (you can see the browser!)
 pnpm exec playwright test --ui
 
 # Or for a specific app
 cd apps/admin
 pnpm exec playwright test --ui
+
+# Or using Makefile
+make test-e2e-ui
 ```
+
+**What you'll see:**
+- 🌐 **Live browser** - Watch tests run in real-time
+- 📸 **Screenshots** - See screenshots taken during tests
+- 🎥 **Video recordings** - Watch test execution videos
+- 📊 **Test timeline** - See step-by-step execution
+- 🔍 **DOM snapshots** - Inspect page state at each step
 
 ### Run Tests in Debug Mode
 

@@ -56,6 +56,60 @@ test-e2e:
 	@echo "$(BLUE)🧪 Running E2E tests...$(NC)"
 	@pnpm test:e2e
 
+## test-e2e-ui: Run E2E tests in UI mode (interactive - see browser running!)
+test-e2e-ui:
+	@echo "$(BLUE)🧪 Opening Playwright UI (interactive mode)...$(NC)"
+	@echo "$(YELLOW)💡 Tip: You'll see the browser running and can watch tests in real-time!$(NC)"
+	@echo "$(YELLOW)💡 The UI will open in your browser automatically.$(NC)"
+	@echo "$(YELLOW)Select which app to test:$(NC)"
+	@echo "  1) Web app (port 3000)"
+	@echo "  2) Admin app (port 3001)"
+	@read -p "Enter choice (1 or 2): " choice; \
+	if [ "$$choice" = "1" ]; then \
+		cd apps/web && pnpm exec playwright test --ui; \
+	elif [ "$$choice" = "2" ]; then \
+		cd apps/admin && pnpm exec playwright test --ui; \
+	else \
+		echo "$(YELLOW)Running web app by default...$(NC)"; \
+		cd apps/web && pnpm exec playwright test --ui; \
+	fi
+
+## test-e2e-web: Run E2E tests for web app in UI mode
+test-e2e-ui-web:
+	@echo "$(BLUE)🧪 Opening Playwright UI for web app...$(NC)"
+	@cd apps/web && pnpm exec playwright test --ui
+
+## test-e2e-ui-admin: Run E2E tests for admin app in UI mode
+test-e2e-ui-admin:
+	@echo "$(BLUE)🧪 Opening Playwright UI for admin app...$(NC)"
+	@cd apps/admin && pnpm exec playwright test --ui
+
+## test-e2e-headed: Run E2E tests with visible browser (headed mode)
+test-e2e-headed:
+	@echo "$(BLUE)🧪 Running E2E tests with visible browser...$(NC)"
+	@echo "$(YELLOW)Select which app to test:$(NC)"
+	@echo "  1) Web app (port 3000)"
+	@echo "  2) Admin app (port 3001)"
+	@read -p "Enter choice (1 or 2): " choice; \
+	if [ "$$choice" = "1" ]; then \
+		cd apps/web && pnpm exec playwright test --headed; \
+	elif [ "$$choice" = "2" ]; then \
+		cd apps/admin && pnpm exec playwright test --headed; \
+	else \
+		echo "$(YELLOW)Running web app by default...$(NC)"; \
+		cd apps/web && pnpm exec playwright test --headed; \
+	fi
+
+## test-e2e-headed-web: Run E2E tests for web app with visible browser
+test-e2e-headed-web:
+	@echo "$(BLUE)🧪 Running E2E tests for web app with visible browser...$(NC)"
+	@cd apps/web && pnpm exec playwright test --headed
+
+## test-e2e-headed-admin: Run E2E tests for admin app with visible browser
+test-e2e-headed-admin:
+	@echo "$(BLUE)🧪 Running E2E tests for admin app with visible browser...$(NC)"
+	@cd apps/admin && pnpm exec playwright test --headed
+
 ## lint: Lint all packages
 lint:
 	@echo "$(BLUE)📏 Linting code...$(NC)"

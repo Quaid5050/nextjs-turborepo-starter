@@ -196,7 +196,13 @@ pnpm test
 Run E2E tests:
 
 ```bash
+# Run tests (headless)
 pnpm test:e2e
+
+# Run tests with UI mode (see browser running!)
+make test-e2e-ui
+# or
+pnpm exec playwright test --ui
 ```
 
 Run Storybook:
@@ -328,6 +334,7 @@ Comprehensive documentation is available in the `docs/` folder:
 - **[Development Workflow](./docs/development-workflow.md)** - Git workflow, commit guidelines, and development process
 - **[Troubleshooting Guide](./docs/troubleshooting.md)** - Common issues and solutions
 - **[Playwright Testing Guide](./docs/playwright-guide.md)** - Complete guide to E2E testing with Playwright
+- **[Viewing Playwright Results](./docs/playwright-viewing-results.md)** - How to view screenshots, videos, and browser during tests
 
 ## 🔧 Configuration Files
 
