@@ -19,7 +19,7 @@ export interface PaginatedResponse<T> {
   totalPages: number;
 }
 
-export type Status = "active" | "inactive" | "pending" | "archived";
+export type Status = 'active' | 'inactive' | 'pending' | 'archived';
 
 export interface ApiResponse<T> {
   success: boolean;

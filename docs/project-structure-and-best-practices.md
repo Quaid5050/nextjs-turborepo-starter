@@ -142,7 +142,7 @@ export interface Product {
   category: string;
 }
 
-export type ProductStatus = "active" | "inactive" | "draft";
+export type ProductStatus = 'active' | 'inactive' | 'draft';
 
 export interface ProductFilters {
   category?: string;
@@ -158,9 +158,9 @@ Use TypeScript utility types for code reuse:
 
 ```typescript
 // Create variations using utility types
-export type ProductPreview = Pick<Product, "id" | "name" | "price" | "images">;
-export type CreateProduct = Omit<Product, "id" | "createdAt">;
-export type UpdateProduct = Partial<Pick<Product, "name" | "price" | "description">>;
+export type ProductPreview = Pick<Product, 'id' | 'name' | 'price' | 'images'>;
+export type CreateProduct = Omit<Product, 'id' | 'createdAt'>;
+export type UpdateProduct = Partial<Pick<Product, 'name' | 'price' | 'description'>>;
 ```
 
 ### Service-Specific Types
@@ -169,7 +169,7 @@ Services can have their own types file that imports from the main types:
 
 ```typescript
 // src/services/product/product.types.ts
-import type { Product, ProductFilters } from "@/types/product.types";
+import type { Product, ProductFilters } from '@/types/product.types';
 
 export interface ProductServiceResponse {
   products: Product[];
@@ -198,13 +198,13 @@ Each service should have:
 
 ```typescript
 // src/services/product/product.service.ts
-import type { Product, ProductFilters } from "@/types/product.types";
-import type { ProductServiceResponse, ProductServiceParams } from "./product.types";
-import { apiClient } from "@/lib/api-client";
+import type { Product, ProductFilters } from '@/types/product.types';
+import type { ProductServiceResponse, ProductServiceParams } from './product.types';
+import { apiClient } from '@/lib/api-client';
 
 // Server-side API functions
 export async function getProducts(params?: ProductServiceParams): Promise<ProductServiceResponse> {
-  const response = await apiClient.get<ProductServiceResponse>("/api/products", { params });
+  const response = await apiClient.get<ProductServiceResponse>('/api/products', { params });
   return response.data;
 }
 
@@ -214,7 +214,7 @@ export async function getProductById(id: string): Promise<Product> {
 }
 
 export async function createProduct(data: CreateProduct): Promise<Product> {
-  const response = await apiClient.post<Product>("/api/products", data);
+  const response = await apiClient.post<Product>('/api/products', data);
   return response.data;
 }
 ```
@@ -223,21 +223,21 @@ export async function createProduct(data: CreateProduct): Promise<Product> {
 
 ```typescript
 // src/services/product/product.hooks.ts
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getProducts, getProductById, createProduct } from "./product.service";
-import type { ProductServiceParams, CreateProduct } from "./product.types";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getProducts, getProductById, createProduct } from './product.service';
+import type { ProductServiceParams, CreateProduct } from './product.types';
 
 // Query hooks
 export const useProducts = (params?: ProductServiceParams) => {
   return useQuery({
-    queryKey: ["products", params],
+    queryKey: ['products', params],
     queryFn: () => getProducts(params),
   });
 };
 
 export const useProduct = (id: string) => {
   return useQuery({
-    queryKey: ["product", id],
+    queryKey: ['product', id],
     queryFn: () => getProductById(id),
     enabled: !!id,
   });
@@ -250,7 +250,7 @@ export const useCreateProduct = () => {
   return useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ['products'] });
     },
   });
 };
@@ -329,9 +329,9 @@ Use Zustand for:
 
 ```typescript
 // src/stores/use-cart-store.ts
-import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
-import type { CartItem } from "@/types/cart.types";
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+import type { CartItem } from '@/types/cart.types';
 
 interface CartStore {
   items: CartItem[];
@@ -352,7 +352,7 @@ export const useCartStore = create<CartStore>()(
           })),
         clearCart: () => set({ items: [] }),
       }),
-      { name: "cart-store" }
+      { name: 'cart-store' }
     )
   )
 );
@@ -411,12 +411,12 @@ Create a reusable API client:
 
 ```typescript
 // src/lib/api-client.ts
-import axios from "axios";
+import axios from 'axios';
 
 export const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || '/api',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -566,16 +566,16 @@ Organize imports consistently:
 
 ```typescript
 // 1. External packages
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 // 2. Internal absolute imports (@/)
-import { Button } from "@/components/ui/button";
-import { useProducts } from "@/services/product/product.hooks";
-import type { Product } from "@/types/product.types";
+import { Button } from '@/components/ui/button';
+import { useProducts } from '@/services/product/product.hooks';
+import type { Product } from '@/types/product.types';
 
 // 3. Relative imports
-import { ProductCard } from "./product-card";
+import { ProductCard } from './product-card';
 ```
 
 ### 7. Naming Conventions

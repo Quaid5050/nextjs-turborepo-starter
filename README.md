@@ -227,7 +227,7 @@ Shared UI components built with shadcn/ui.
 **Usage:**
 
 ```typescript
-import { Button } from "@repo/ui";
+import { Button } from '@repo/ui';
 ```
 
 ### `@repo/types`
@@ -237,7 +237,7 @@ Shared TypeScript type definitions.
 **Usage:**
 
 ```typescript
-import type { BaseEntity, ApiResponse } from "@repo/types";
+import type { BaseEntity, ApiResponse } from '@repo/types';
 ```
 
 ### `@repo/utils`
@@ -247,7 +247,7 @@ Shared utility functions.
 **Usage:**
 
 ```typescript
-import { getBaseUrl, formatDate } from "@repo/utils";
+import { getBaseUrl, formatDate } from '@repo/utils';
 ```
 
 ### `@repo/eslint-config`
