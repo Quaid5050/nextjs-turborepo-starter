@@ -33,8 +33,7 @@ await configure({
     {
       category: ['app'],
       sinks:
-        Env.NEXT_PUBLIC_BETTER_STACK_SOURCE_TOKEN
-        && Env.NEXT_PUBLIC_BETTER_STACK_INGESTING_HOST
+        Env.NEXT_PUBLIC_BETTER_STACK_SOURCE_TOKEN && Env.NEXT_PUBLIC_BETTER_STACK_INGESTING_HOST
           ? ['console', 'betterStack']
           : ['console'],
       lowestLevel: 'debug',

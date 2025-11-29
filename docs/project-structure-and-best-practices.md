@@ -160,9 +160,7 @@ Use TypeScript utility types for code reuse:
 // Create variations using utility types
 export type ProductPreview = Pick<Product, "id" | "name" | "price" | "images">;
 export type CreateProduct = Omit<Product, "id" | "createdAt">;
-export type UpdateProduct = Partial<
-  Pick<Product, "name" | "price" | "description">
->;
+export type UpdateProduct = Partial<Pick<Product, "name" | "price" | "description">>;
 ```
 
 ### Service-Specific Types
@@ -201,20 +199,12 @@ Each service should have:
 ```typescript
 // src/services/product/product.service.ts
 import type { Product, ProductFilters } from "@/types/product.types";
-import type {
-  ProductServiceResponse,
-  ProductServiceParams,
-} from "./product.types";
+import type { ProductServiceResponse, ProductServiceParams } from "./product.types";
 import { apiClient } from "@/lib/api-client";
 
 // Server-side API functions
-export async function getProducts(
-  params?: ProductServiceParams,
-): Promise<ProductServiceResponse> {
-  const response = await apiClient.get<ProductServiceResponse>(
-    "/api/products",
-    { params },
-  );
+export async function getProducts(params?: ProductServiceParams): Promise<ProductServiceResponse> {
+  const response = await apiClient.get<ProductServiceResponse>("/api/products", { params });
   return response.data;
 }
 
@@ -362,9 +352,9 @@ export const useCartStore = create<CartStore>()(
           })),
         clearCart: () => set({ items: [] }),
       }),
-      { name: "cart-store" },
-    ),
-  ),
+      { name: "cart-store" }
+    )
+  )
 );
 ```
 
@@ -609,9 +599,7 @@ import { ProductCard } from "./product-card";
  * @param params - Filter and pagination parameters
  * @returns Promise resolving to products response
  */
-export async function getProducts(
-  params?: ProductServiceParams,
-): Promise<ProductServiceResponse> {
+export async function getProducts(params?: ProductServiceParams): Promise<ProductServiceResponse> {
   // Implementation
 }
 ```

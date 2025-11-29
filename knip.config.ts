@@ -10,11 +10,7 @@ const config: KnipConfig = {
     "tests/**/*.ts",
   ],
   // Dependencies to ignore during analysis
-  ignoreDependencies: [
-    "@commitlint/types",
-    "conventional-changelog-conventionalcommits",
-    "vite",
-  ],
+  ignoreDependencies: ["@commitlint/types", "conventional-changelog-conventionalcommits", "vite"],
   // Binaries to ignore during analysis
   ignoreBinaries: [
     "production", // False positive raised with dotenv-cli

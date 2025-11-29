@@ -20,7 +20,7 @@ test.describe("Sanity", () => {
       await expect(
         page.getByRole("heading", {
           name: "Boilerplate Code for Your Next.js Project with Tailwind CSS",
-        }),
+        })
       ).toBeVisible();
     });
 
@@ -31,9 +31,7 @@ test.describe("Sanity", () => {
 
       await expect(page).toHaveURL(/about$/);
 
-      await expect(
-        page.getByText("Welcome to our About page", { exact: false }),
-      ).toBeVisible();
+      await expect(page.getByText("Welcome to our About page", { exact: false })).toBeVisible();
     });
 
     test("should navigate to the portfolio page", async ({ page, baseURL }) => {
@@ -43,9 +41,7 @@ test.describe("Sanity", () => {
 
       await expect(page).toHaveURL(/portfolio$/);
 
-      await expect(
-        page.locator("main").getByRole("link", { name: /^Portfolio/ }),
-      ).toHaveCount(6);
+      await expect(page.locator("main").getByRole("link", { name: /^Portfolio/ })).toHaveCount(6);
     });
   });
 });

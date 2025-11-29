@@ -31,9 +31,7 @@ export default async function Index(props: IIndexProps) {
       <h1 className="mb-4 text-3xl font-bold text-gray-900">Welcome</h1>
       <p className="text-lg text-gray-700">{t('meta_description')}</p>
       <div className="mt-8 rounded-lg bg-blue-100 p-4">
-        <p className="text-blue-800">
-          If you can see this blue box, Tailwind CSS is working!
-        </p>
+        <p className="text-blue-800">If you can see this blue box, Tailwind CSS is working!</p>
       </div>
     </div>
   );

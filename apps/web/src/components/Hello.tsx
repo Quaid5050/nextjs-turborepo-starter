@@ -3,8 +3,8 @@ export const Hello = () => {
     <>
       <p>👋 Welcome to Next.js Boilerplate!</p>
       <p>
-        Need advanced features? Shadcn UI, End-to-End Typesafety with oRPC,
-        Stripe Payment, Light / Dark mode. Try
+        Need advanced features? Shadcn UI, End-to-End Typesafety with oRPC, Stripe Payment, Light /
+        Dark mode. Try
         {' '}
         <a
           className="text-blue-700 hover:border-b-2 hover:border-blue-700"
