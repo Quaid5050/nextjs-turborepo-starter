@@ -4,12 +4,37 @@ This guide helps you resolve common issues when working with this boilerplate.
 
 ## Table of Contents
 
-1. [Playwright Browser Installation](#playwright-browser-installation)
-2. [Test Failures](#test-failures)
-3. [TypeScript Errors](#typescript-errors)
-4. [Build Issues](#build-issues)
-5. [Environment Variables](#environment-variables)
-6. [Dependency Issues](#dependency-issues)
+1. [Quick Setup](#quick-setup)
+2. [Playwright Browser Installation](#playwright-browser-installation)
+3. [Test Failures](#test-failures)
+4. [TypeScript Errors](#typescript-errors)
+5. [Build Issues](#build-issues)
+6. [Environment Variables](#environment-variables)
+7. [Dependency Issues](#dependency-issues)
+
+## Quick Setup
+
+### Using Makefile
+
+The easiest way to set up the project is using the Makefile:
+
+```bash
+make setup
+```
+
+This single command will:
+- Install all dependencies
+- Install Playwright browsers
+- Set up everything needed to start development
+
+### Manual Setup
+
+If you prefer to set up manually or don't have `make` available:
+
+```bash
+pnpm install
+pnpm exec playwright install
+```
 
 ## Playwright Browser Installation
 
@@ -321,6 +346,38 @@ If you encounter an issue not covered here:
    - [Development Workflow](./development-workflow.md)
 
 ## Common Commands Reference
+
+### Using Makefile (Recommended)
+
+```bash
+# Complete setup
+make setup
+
+# Development
+make dev
+
+# Testing
+make test
+make test-e2e
+
+# Code quality
+make lint
+make lint-fix
+make type-check
+make verify
+
+# Build
+make build
+
+# Clean
+make clean
+make clean:all
+
+# Show all commands
+make help
+```
+
+### Using pnpm directly
 
 ```bash
 # Install dependencies

@@ -108,8 +108,25 @@ turbo-repo-boilerplate/
 
 - **Node.js** >= 20
 - **pnpm** >= 9.0.0
+- **make** (optional, for using Makefile commands)
+
+**Note:** On Windows, you can use [Git Bash](https://git-scm.com/downloads) or [WSL](https://docs.microsoft.com/en-us/windows/wsl/) to run Makefile commands. Alternatively, you can use the pnpm commands directly.
 
 ### Installation
+
+**Option 1: Using Makefile (Recommended)**
+
+```bash
+git clone <your-repo-url> my-project-name
+cd my-project-name
+make setup
+```
+
+This will automatically:
+- Install all dependencies
+- Install Playwright browsers (required for testing)
+
+**Option 2: Manual Installation**
 
 ```bash
 git clone <your-repo-url> my-project-name
@@ -126,6 +143,12 @@ pnpm exec playwright install
 
 Run all apps in development mode:
 
+**Using Makefile:**
+```bash
+make dev
+```
+
+**Or using pnpm directly:**
 ```bash
 pnpm dev
 ```
@@ -338,7 +361,25 @@ All configuration files from the Next.js boilerplate are included:
 
 ## 📝 Scripts Reference
 
-### Root Scripts
+### Using Makefile (Recommended)
+
+The project includes a `Makefile` with convenient commands:
+
+```bash
+make setup          # Complete project setup (install + browsers)
+make dev            # Start all apps in development
+make build          # Build all apps
+make test           # Run all unit tests
+make test-e2e       # Run E2E tests
+make lint           # Lint all packages
+make lint-fix       # Fix linting issues
+make type-check     # Type check all packages
+make verify         # Run all checks (lint + type-check + test)
+make clean          # Clean all build artifacts
+make help           # Show all available commands
+```
+
+### Root Scripts (pnpm)
 
 - `pnpm dev` - Start all apps in development
 - `pnpm build` - Build all apps
