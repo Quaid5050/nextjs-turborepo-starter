@@ -1,4 +1,10 @@
-import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 import axios from 'axios';
 import { logger } from '@/libs/Logger';
 
@@ -9,7 +15,7 @@ export class ApiError extends Error {
   constructor(
     message: string,
     public statusCode?: number,
-    public data?: unknown,
+    public data?: unknown
   ) {
     super(message);
     this.name = 'ApiError';
@@ -80,7 +86,7 @@ apiClient.interceptors.request.use(
   (error: AxiosError) => {
     logger.error('Request error', { error: error.message });
     return Promise.reject(error);
-  },
+  }
 );
 
 /**
@@ -129,11 +135,11 @@ apiClient.interceptors.response.use(
         case 401:
           // Unauthorized - clear auth and redirect to login
           logger.warn('Unauthorized request', { url: originalRequest.url });
-  // Example: Clear auth token and redirect
-  // if (typeof window !== 'undefined') {
-  //   localStorage.removeItem('authToken');
-  //   window.location.href = '/login';
-  // }
+          // Example: Clear auth token and redirect
+          // if (typeof window !== 'undefined') {
+          //   localStorage.removeItem('authToken');
+          //   window.location.href = '/login';
+          // }
           break;
 
         case 403:
@@ -170,23 +176,21 @@ apiClient.interceptors.response.use(
         error.message ||
         `Request failed with status ${status}`;
 
-      return Promise.reject(
-        new ApiError(errorMessage, status, data),
-      );
+      return Promise.reject(new ApiError(errorMessage, status, data));
     }
 
     // Handle network errors
     if (error.request) {
       logger.error('Network error', { message: error.message });
       return Promise.reject(
-        new ApiError('Network error: Please check your connection', undefined, error.message),
+        new ApiError('Network error: Please check your connection', undefined, error.message)
       );
     }
 
     // Handle other errors
     logger.error('Unknown error', { error: error.message });
     return Promise.reject(new ApiError(error.message || 'An unexpected error occurred'));
-  },
+  }
 );
 
 /**

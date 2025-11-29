@@ -19,7 +19,7 @@ const handleSearch = useDebouncedCallback((value: string) => {
   console.log('Searching for:', value);
 }, 500);
 
-<input onChange={(e) => handleSearch(e.target.value)} />
+<input onChange={(e) => handleSearch(e.target.value)} />;
 ```
 
 ### `useDebouncedValue`
@@ -40,6 +40,7 @@ useEffect(() => {
 ```
 
 **Note:** You can also use `useDebounce` directly (re-exported for convenience):
+
 ```tsx
 import { useDebounce } from '@repo/hooks';
 const [debouncedValue, { isPending, cancel, flush }] = useDebounce(value, delay);
@@ -85,4 +86,3 @@ pnpm type-check
 # Lint
 pnpm lint
 ```
-

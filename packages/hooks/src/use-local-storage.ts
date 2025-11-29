@@ -50,7 +50,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
         console.error(`Error setting localStorage key "${key}":`, error);
       }
     },
-    [key, storedValue],
+    [key, storedValue]
   );
 
   // Remove value from localStorage
@@ -89,4 +89,3 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 
   return [storedValue, setValue, removeValue] as const;
 }
-

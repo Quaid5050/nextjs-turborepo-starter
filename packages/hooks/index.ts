@@ -6,4 +6,3 @@ export { useMediaQuery } from './src/use-media-query';
 
 // Re-export useDebounce for convenience (matches existing app hooks)
 export { useDebounce } from 'use-debounce';
-

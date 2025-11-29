@@ -19,9 +19,8 @@ import { useDebouncedCallback as useDebouncedCallbackLib } from 'use-debounce';
  */
 export function useDebouncedCallback<T extends (...args: never[]) => void>(
   callback: T,
-  delay = 300,
+  delay = 300
 ) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return useDebouncedCallbackLib(callback as any, delay);
 }
-
