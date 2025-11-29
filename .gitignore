@@ -9,6 +9,17 @@ node_modules
 coverage
 .nyc_output
 
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+*.trace.zip
+*.webm
+playwright
+
+# Chromatic archives (visual regression testing)
+**/chromatic-archives/
+
 # next.js
 .next/
 out/
@@ -44,6 +55,12 @@ next-env.d.ts
 
 # turbo
 .turbo
+
+# Turbo/pnpm temporary files (empty files created by tools)
+cache
+turbo
+*@0.1.0
+*-boilerplate@*
 
 # IDE
 .vscode/*

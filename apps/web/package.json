@@ -19,7 +19,7 @@
     "storybook": "storybook dev -p 6007",
     "storybook:test": "vitest run --config .storybook/vitest.config.mts",
     "build-storybook": "storybook build",
-    "clean": "rimraf .next out coverage storybook-static"
+    "clean": "rimraf .next out coverage storybook-static test-results playwright-report"
   },
   "dependencies": {
     "@arcjet/next": "^1.0.0-beta.15",

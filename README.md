@@ -327,6 +327,7 @@ Comprehensive documentation is available in the `docs/` folder:
 - **[Project Structure and Best Practices](./docs/project-structure-and-best-practices.md)** - Complete guide on project structure, conventions, and best practices
 - **[Development Workflow](./docs/development-workflow.md)** - Git workflow, commit guidelines, and development process
 - **[Troubleshooting Guide](./docs/troubleshooting.md)** - Common issues and solutions
+- **[Playwright Testing Guide](./docs/playwright-guide.md)** - Complete guide to E2E testing with Playwright
 
 ## 🔧 Configuration Files
 

@@ -86,16 +86,24 @@ storybook:
 	@echo "$(BLUE)📚 Starting Storybook...$(NC)"
 	@pnpm storybook
 
-## clean: Clean all build artifacts and node_modules
+## clean: Clean all build artifacts, test results, and node_modules
 clean:
 	@echo "$(BLUE)🧹 Cleaning build artifacts...$(NC)"
 	@pnpm clean
+	@echo "$(BLUE)🧹 Cleaning test results...$(NC)"
+	@rm -rf apps/*/test-results apps/*/playwright-report
+	@rm -rf test-results playwright-report playwright
+	@echo "$(BLUE)🧹 Cleaning temporary files...$(NC)"
+	@rm -f cache turbo *@0.1.0 *-boilerplate@*
 	@echo "$(GREEN)✅ Clean complete$(NC)"
 
 ## clean-all: Clean everything including node_modules (use with caution)
 clean-all:
 	@echo "$(YELLOW)⚠️  Cleaning everything including node_modules...$(NC)"
 	@rm -rf node_modules apps/*/node_modules packages/*/node_modules
+	@rm -rf apps/*/test-results apps/*/playwright-report
+	@rm -rf test-results playwright-report playwright
+	@rm -f cache turbo *@0.1.0 *-boilerplate@*
 	@pnpm clean
 	@echo "$(GREEN)✅ Deep clean complete$(NC)"
 
@@ -108,6 +116,19 @@ format:
 build-stats:
 	@echo "$(BLUE)📊 Building with bundle analysis...$(NC)"
 	@pnpm build-stats
+
+## clean-test: Clean only test results and artifacts
+clean-test:
+	@echo "$(BLUE)🧹 Cleaning test results...$(NC)"
+	@rm -rf apps/*/test-results apps/*/playwright-report
+	@rm -rf test-results playwright-report playwright
+	@echo "$(GREEN)✅ Test artifacts cleaned$(NC)"
+
+## clean-temp: Clean temporary files (cache, empty files, etc.)
+clean-temp:
+	@echo "$(BLUE)🧹 Cleaning temporary files...$(NC)"
+	@rm -f cache turbo *@0.1.0 *-boilerplate@*
+	@echo "$(GREEN)✅ Temporary files cleaned$(NC)"
 
 ## verify: Run all checks (lint, type-check, test)
 verify: lint type-check test

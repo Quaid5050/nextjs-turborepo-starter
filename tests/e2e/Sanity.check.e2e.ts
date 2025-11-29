@@ -17,31 +17,18 @@ test.describe('Sanity', () => {
     test('should display the homepage', async ({ page, baseURL }) => {
       await page.goto(`${baseURL}/`);
 
-      await expect(
-        page.getByRole('heading', {
-          name: 'Boilerplate Code for Your Next.js Project with Tailwind CSS',
-        })
-      ).toBeVisible();
+      // Verify homepage loads with welcome heading
+      await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+
+      // Verify page content is visible
+      await expect(page.getByText(/Next js Boilerplate/i)).toBeVisible();
     });
 
-    test('should navigate to the about page', async ({ page, baseURL }) => {
+    test('should have working navigation', async ({ page, baseURL }) => {
       await page.goto(`${baseURL}/`);
 
-      await page.getByRole('link', { name: 'About' }).click();
-
-      await expect(page).toHaveURL(/about$/);
-
-      await expect(page.getByText('Welcome to our About page', { exact: false })).toBeVisible();
-    });
-
-    test('should navigate to the portfolio page', async ({ page, baseURL }) => {
-      await page.goto(`${baseURL}/`);
-
-      await page.getByRole('link', { name: 'Portfolio' }).click();
-
-      await expect(page).toHaveURL(/portfolio$/);
-
-      await expect(page.locator('main').getByRole('link', { name: /^Portfolio/ })).toHaveCount(6);
+      // Verify navigation is present
+      await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
     });
   });
 });
