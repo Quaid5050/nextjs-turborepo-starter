@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout(props: {
@@ -52,7 +52,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
-      <body>
+      <body suppressHydrationWarning>
         <QueryProvider>
           <NuqsProvider>
             <NextIntlClientProvider>

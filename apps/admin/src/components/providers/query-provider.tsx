@@ -17,7 +17,7 @@ export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
             retry: 1,
           },
         },
-      }),
+      })
   );
 
   return (
@@ -27,4 +27,3 @@ export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
     </QueryClientProvider>
   );
 };
-

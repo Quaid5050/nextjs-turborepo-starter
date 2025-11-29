@@ -18,13 +18,10 @@ const aj = arcjet.withRule(
       'CATEGORY:PREVIEW', // Allow preview links to show OG images
       'CATEGORY:MONITOR', // Allow uptime monitoring services
     ],
-  }),
+  })
 );
 
-export default async function proxy(
-  request: NextRequest,
-  _event: NextFetchEvent,
-) {
+export default async function proxy(request: NextRequest, _event: NextFetchEvent) {
   // Verify the request with Arcjet
   // Use `process.env` instead of Env to reduce bundle size in middleware
   if (process.env.ARCJET_KEY) {

@@ -23,10 +23,8 @@ export default async function Layout(props: {
           </nav>
         </div>
       </header>
-      <main className="mx-auto max-w-7xl px-4 py-8">
-        {props.children}
-      </main>
-      <footer className="border-t border-gray-200 mt-auto">
+      <main className="mx-auto max-w-7xl px-4 py-8">{props.children}</main>
+      <footer className="mt-auto border-t border-gray-200">
         <div className="mx-auto max-w-7xl px-4 py-4 text-center text-sm text-gray-600">
           © {new Date().getFullYear()} All rights reserved.
         </div>

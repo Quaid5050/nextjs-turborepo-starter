@@ -2,23 +2,74 @@
   "name": "turbo-repo-boilerplate",
   "version": "0.1.0",
   "private": true,
+  "author": "Quaid Ahmed (https://github.com/quaid5050)",
   "scripts": {
     "build": "turbo run build",
+    "build-stats": "cross-env ANALYZE=true turbo run build",
     "dev": "turbo run dev",
+    "start": "turbo run start",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "check-types": "turbo run check-types",
     "type-check": "turbo run type-check",
+    "check:deps": "knip",
+    "check:i18n": "turbo run check:i18n",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "storybook": "turbo run storybook",
+    "storybook:test": "turbo run storybook:test",
+    "build-storybook": "turbo run build-storybook",
+    "commit": "commit",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/prompt-cli": "^20.0.0",
+    "@lingual/i18n-check": "^0.8.14",
+    "@playwright/test": "^1.56.1",
+    "@spotlightjs/spotlight": "^4.5.1",
+    "@storybook/addon-a11y": "^10.0.8",
+    "@storybook/addon-docs": "^10.0.8",
+    "@storybook/addon-vitest": "^10.0.8",
+    "@storybook/nextjs-vite": "^10.0.8",
+    "@vitest/browser": "^4.0.6",
+    "@vitest/browser-playwright": "^4.0.6",
+    "@vitest/coverage-v8": "^4.0.6",
+    "checkly": "^6.9.2",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "cross-env": "^10.1.0",
+    "knip": "^5.70.2",
+    "lefthook": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "playwright": "^1.56.1",
     "prettier": "^3.6.2",
+    "rimraf": "^6.1.2",
+    "semantic-release": "^25.0.2",
+    "storybook": "^10.0.8",
     "turbo": "^2.6.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.4",
+    "vitest-browser-react": "^2.0.2"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=20"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
   }
 }

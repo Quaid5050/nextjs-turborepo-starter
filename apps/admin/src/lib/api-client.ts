@@ -1,4 +1,5 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
 
 /**
  * Reusable API client instance
@@ -27,7 +28,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 /**
@@ -47,7 +48,7 @@ apiClient.interceptors.response.use(
     //   // Handle server errors
     // }
     return Promise.reject(error);
-  },
+  }
 );
 
 /**
@@ -69,4 +70,3 @@ export const api = {
   delete: <T = unknown>(url: string, config?: AxiosRequestConfig) =>
     apiClient.delete<T>(url, config).then((response) => response.data),
 };
-

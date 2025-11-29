@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-interface StoreState {
+type StoreState = {
   count: number;
   increment: () => void;
   decrement: () => void;
   reset: () => void;
-}
+};
 
 export const useStore = create<StoreState>()(
   devtools(
@@ -19,11 +19,10 @@ export const useStore = create<StoreState>()(
       }),
       {
         name: 'app-store',
-      },
+      }
     ),
     {
       name: 'AppStore',
-    },
-  ),
+    }
+  )
 );
-

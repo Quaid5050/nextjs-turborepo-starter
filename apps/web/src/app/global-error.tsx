@@ -5,9 +5,7 @@ import NextError from 'next/error';
 import { useEffect } from 'react';
 import { routing } from '@/libs/i18n-routing';
 
-export default function GlobalError(props: {
-  error: Error & { digest?: string };
-}) {
+export default function GlobalError(props: { error: Error & { digest?: string } }) {
   useEffect(() => {
     Sentry.captureException(props.error);
   }, [props.error]);
