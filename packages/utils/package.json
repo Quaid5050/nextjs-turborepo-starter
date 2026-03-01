@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@swc/helpers": "^0.5.18",
+    "@swc/helpers": "^0.5.19",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
